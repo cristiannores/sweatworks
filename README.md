@@ -5,9 +5,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Local Test
 
-`cd front` and run `ng serve` for development environment. You can also use `ng serve --prod` for production environment.
+`cd front` & `npm i` and run `ng serve` for development environment. You can also use `ng serve --prod` for production environment.
  Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 ## Build Services
+
+`cd services/authors` & `npm i`
+
+`cd services/publications` & `npm i`
+
+`cd ../`  in services folder then 
 
 Install dependencies `sudo npm install -g serverless`
 
