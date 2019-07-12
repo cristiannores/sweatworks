@@ -1,0 +1,47 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" #drawer class="example-content">
+
+        <mat-list>
+            <div style="text-align: center">
+                <h3>Authors</h3>
+            </div>
+            <mat-list-item role="listitem" *ngFor="let author of authors">
+                <button mat-raised-button color="primary" (click)="selectAuthor(author.id)">{{author.name}} </button>
+            </mat-list-item>
+
+        </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+
+
+        <div style="margin-bottom: 20px; margin-left : 40px; margin-top:20px">
+            <form *ngIf="searchForm" class="example-form" (keydown.enter)="$event.preventDefault()" [formGroup]="searchForm">
+                <mat-form-field class="width-60-percent">
+                    <input matInput placeholder="Search by title" value="" formControlName="title">
+                </mat-form-field>
+                <mat-form-field class="width-15-percent">
+                    <mat-label>Order by</mat-label>
+                    <mat-select formControlName="order">
+                        <mat-option value="recently_created">Recently created</mat-option>
+                        <mat-option value="last_created">Last created</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="width-15-percent">
+                    <button mat-raised-button (click)="searchPublications($event)">SEARCH</button>
+                </div>
+            </form>
+        </div>
+
+        <app-publication-item *ngFor="let publication of publications" [body]="publication.body" [title]="publication.title"
+            [date-pub]="publication.createdAt | date:'yyyy-MM-dd mm:ss' "></app-publication-item>
+
+
+        <mat-paginator   (page)="pageChange($event)" style="margin-bottom: 20px; margin-left : 40px; margin-top:20px; margin-right: 20px" [length]="publicationsCount"
+            [pageSize]="pageSize">
+        </mat-paginator>
+
+
+
+
+    </mat-drawer-content>
+</mat-drawer-container>
